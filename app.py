@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 st.title("🏦 Insurance Claims Agentic AI")
-st.caption("AI-assisted insurance claims decision-support prototype")
+st.caption("AI-assisted insurance claims decision-support platform")
 
 st.divider()
 
@@ -18,30 +18,136 @@ st.subheader("📋 Claim Information")
 
 claim = st.text_area(
     "Enter insurance claim details",
-    placeholder="Example: Car accident claim - vehicle damaged in a collision. Repair estimate is 85000 INR.",
+    placeholder=(
+        "Example: Car accident claim - vehicle damaged in a collision. "
+        "Repair estimate is 85000 INR."
+    ),
     height=150
 )
 
-if st.button("🔍 Analyze Claim", type="primary"):
+
+if st.button(
+    "🔍 Analyze Claim",
+    type="primary",
+    use_container_width=True
+):
 
     if not claim.strip():
-        st.warning("Please enter claim details.")
+
+        st.warning("Please enter claim details before analysis.")
+
     else:
+
         with st.spinner("Running multi-agent claim analysis..."):
 
             orchestrator = OrchestratorAgent()
             result = orchestrator.run(claim)
 
-        st.success("Claim analysis completed.")
+        st.success("✅ Claim analysis completed successfully.")
 
-        st.subheader("📝 Claims Assessment Report")
+        st.divider()
 
-        st.text(result)
+        st.subheader("📊 Analysis Overview")
+
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            st.metric("📄 Documents", "Reviewed")
+
+        with col2:
+            st.metric("📋 Policy", "Retrieved")
+
+        with col3:
+            st.metric("🔎 Assessment", "Completed")
+
+        with col4:
+            st.metric("🚨 Fraud", "Indicators Checked")
+
+        st.divider()
+
+        # Cleanly extract each section from the report
+
+        document_section = result.split(
+            "📄 Document Review\n------------------\n", 1
+        )[1].split(
+            "📋 Policy Review", 1
+        )[0].strip()
+
+        policy_section = result.split(
+            "📋 Policy Review\n----------------\n", 1
+        )[1].split(
+            "🔎 Claim Assessment", 1
+        )[0].strip()
+
+        assessment_section = result.split(
+            "🔎 Claim Assessment\n-------------------\n", 1
+        )[1].split(
+            "🚨 Fraud Indicator Review", 1
+        )[0].strip()
+
+        fraud_section = result.split(
+            "🚨 Fraud Indicator Review\n-------------------------\n", 1
+        )[1].split(
+            "👨‍💼 Human Review", 1
+        )[0].strip()
+
+        human_section = result.split(
+            "👨‍💼 Human Review\n----------------\n", 1
+        )[1].strip()
+
+
+        st.subheader("📄 Document Review")
+
+        with st.expander(
+            "View Document Findings",
+            expanded=True
+        ):
+            st.write(document_section)
+
+
+        st.subheader("📋 Policy Review")
+
+        with st.expander(
+            "View Retrieved Policy Information",
+            expanded=True
+        ):
+            st.write(policy_section)
+
+
+        st.subheader("🔎 Claim Assessment")
+
+        with st.expander(
+            "View Assessment Details",
+            expanded=True
+        ):
+            st.write(assessment_section)
+
+
+        st.subheader("🚨 Fraud Indicator Review")
+
+        with st.expander(
+            "View Fraud Indicators",
+            expanded=True
+        ):
+            st.write(fraud_section)
+
+
+        st.subheader("👨‍💼 Human Review")
+
+        st.info(
+            "Final claim decisions require review by an "
+            "authorized insurance professional."
+        )
+
+        with st.expander("View Human Review Details"):
+            st.write(human_section)
+
 
 st.divider()
 
-st.info(
-    "⚠️ This is an educational decision-support prototype. "
-    "It does not automatically approve, reject, or establish fraud. "
-    "Final decisions require authorized human review."
+st.warning(
+    "⚠️ Educational decision-support prototype. "
+    "This system does not automatically approve or reject claims "
+    "and does not establish fraud. Final decisions require "
+    "authorized human review."
 )
