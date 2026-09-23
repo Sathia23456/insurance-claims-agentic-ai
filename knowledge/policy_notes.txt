@@ -1,0 +1,15 @@
+Insurance Claims Policy Notes
+
+A claim is a request for coverage or compensation under an insurance policy.
+
+Policy coverage depends on the specific terms, conditions, exclusions, limits, and deductibles of the policy.
+
+Claim documents may include a claim form, incident description, invoices, photographs, repair estimates, and supporting records.
+
+A claim should be reviewed against the applicable policy terms and available evidence.
+
+Potential fraud indicators may include inconsistent information, unusual claim timing, duplicate documentation, or suspicious patterns. These indicators require further human investigation and do not by themselves establish fraud.
+
+Claim assessment should be based on documented evidence and applicable policy terms.
+
+This document is for software demonstration and educational purposes only. It does not provide actual insurance coverage or claim approval decisions.
