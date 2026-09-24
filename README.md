@@ -1,97 +1,121 @@
-# 🏦 Insurance Claims Agentic AI
+# Insurance Claims Agentic AI
 
-AI-assisted insurance claims decision-support platform built using a multi-agent architecture.
+An AI-assisted insurance claims decision-support system built using a multi-agent architecture.
 
-## 📌 Overview
+## Overview
 
-This project demonstrates how multiple AI agents can work together to analyze insurance claim information, retrieve relevant policy knowledge, review potential fraud indicators, and generate a structured assessment report.
+This project demonstrates how multiple AI agents can work together to analyze insurance claims, find relevant policy information, check for possible fraud indicators, and prepare a structured assessment report.
 
-The system is designed as an educational decision-support prototype with human review in the final decision process.
-## 🏗️ System Architecture
+The system is designed as an educational prototype to support insurance claim analysis. The final decision remains with a human reviewer.
 
-👤 Claim Submission
-        ↓
-🎯 Orchestrator Agent
-        ↓
-📄 Document Agent
-📋 Policy Agent
-🔎 Assessment Agent
-🚨 Fraud Indicator Agent
-        ↓
-📝 Report Agent
-        ↓
-👨‍💼 Human Review
+## How the System Works
 
-## 🤖 Agents
+```text
+Claim Submission
+       |
+       v
+Orchestrator Agent
+       |
+       +-------------------+
+       |                   |
+       v                   v
+Document Agent       Policy Agent
+       |                   |
+       +---------+---------+
+                 |
+                 v
+          Assessment Agent
+                 |
+                 v
+       Fraud Indicator Agent
+                 |
+                 v
+            Report Agent
+                 |
+                 v
+            Human Review
+```
 
-### 🎯 Orchestrator Agent
-Coordinates the complete claims analysis workflow.
+## Agents
 
-### 📄 Document Agent
-Reviews submitted claim information and identifies required supporting documents.
+### Orchestrator Agent
 
-### 📋 Policy Agent
-Retrieves relevant policy information using TF-IDF and cosine similarity.
+Manages the overall workflow and coordinates the different agents involved in the claim analysis.
 
-### 🔎 Assessment Agent
-Reviews claim information against retrieved policy knowledge.
+### Document Agent
 
-### 🚨 Fraud Indicator Agent
-Identifies potential indicators that may require further investigation.
+Reviews the claim details and checks whether the required supporting documents or information are available.
 
-### 📝 Report Agent
-Combines agent outputs into a structured claims assessment report.
-## ✨ Features
+### Policy Agent
 
-- Multi-agent claims analysis
-- Policy knowledge retrieval
-- TF-IDF based document retrieval
-- Cosine similarity
-- Fraud indicator review
-- Structured assessment report
-- Human-in-the-loop review
-- Streamlit web interface
-- Safety and decision-support controls
+Searches the available policy information and retrieves the most relevant sections using TF-IDF and cosine similarity.
 
-## 🛠️ Technology Stack
+### Assessment Agent
 
-- Python
-- Scikit-learn
-- Streamlit
-- TF-IDF
-- Cosine Similarity
-- Multi-Agent Architecture
-- GitHub Codespaces
+Compares the claim details with the relevant policy information and provides an initial assessment.
 
-## 🌐 Web Interface
+### Fraud Indicator Agent
 
-The project includes a Streamlit dashboard where users can:
+Looks for potential warning signs or unusual details in the claim that may need additional investigation.
+
+### Report Agent
+
+Brings the results from all the agents together and generates a structured claims assessment report.
+
+## Key Features
+
+* Multi-agent approach for insurance claim analysis
+* Automated policy information retrieval
+* TF-IDF-based document search
+* Cosine similarity for finding relevant policy content
+* Review of potential fraud indicators
+* Structured claims assessment report
+* Human-in-the-loop review
+* Streamlit web interface
+* Safety and decision-support controls
+
+## Technology Stack
+
+* Python
+* Scikit-learn
+* Streamlit
+* TF-IDF
+* Cosine Similarity
+* Multi-Agent Architecture
+* GitHub Codespaces
+
+## Web Interface
+
+The project includes a Streamlit dashboard that allows users to:
 
 1. Enter insurance claim details
-2. Start multi-agent analysis
-3. View document findings
-4. View retrieved policy information
-5. Review assessment results
-6. Review fraud indicators
-7. View human review requirements
-## 🧪 Example Claim
+2. Start the claim analysis process
+3. View document-related findings
+4. Review the relevant policy information
+5. View the claim assessment
+6. Check potential fraud indicators
+7. See whether human review is required
+
+## Example Claim
 
 ```text
 Car accident claim - vehicle damaged in a collision.
-Repair estimate is 85000 INR.
+Repair estimate is 85,000 INR.
 ```
-The system produces a structured report containing:
 
-- Document Review
-- Policy Review
-- Claim Assessment
-- Fraud Indicator Review
-- Human Review
+After the analysis, the system generates a structured report with sections for:
 
-## 📁 Project Structure
+* Document Review
+* Policy Review
+* Claim Assessment
+* Fraud Indicator Review
+* Human Review
+
+## Project Structure
+
 ```text
 insurance-claims-agentic-ai/
-│
+|
 ├── agents/
 │   ├── orchestrator.py
 │   ├── document_agent.py
@@ -107,29 +131,39 @@ insurance-claims-agentic-ai/
 ├── main.py
 ├── .gitignore
 └── README.md
-## ▶️ Run Locally
+```
 
-Install dependencies:
+## Run Locally
 
-bash
+Install the required packages:
+
+```bash
 pip install scikit-learn streamlit
+```
+
+Run the project:
+
+```bash
 python main.py
 streamlit run app.py
-## ⚠️ Safety and Limitations
+```
 
-This project is an educational insurance claims decision-support prototype.
+## Safety and Limitations
 
-It does **not** automatically approve or reject insurance claims and does **not** establish fraud.
+This project is intended as an educational insurance claims decision-support prototype.
 
-Fraud indicators require further investigation.
+It does not automatically approve or reject insurance claims, and it does not determine whether a claim is fraudulent.
 
-Final claim decisions should be made by authorized insurance professionals based on applicable policy terms, evidence, regulations, and organizational procedures.
+Any fraud-related indicators generated by the system should be treated as signals for further investigation, not as proof of fraud.
 
-Only synthetic or demonstration data should be used with this project. Do not use real customer or personally identifiable insurance information.
+Final claim decisions should be made by authorized insurance professionals based on the applicable policy terms, supporting evidence, regulations, and organizational procedures.
 
-## 👨‍💻 Author
+Only synthetic or demonstration data should be used with this project. Real customer information or personally identifiable insurance data should not be used.
+
+## Author
 
 **Sathia23456**
 
-GitHub:  
+GitHub:
+
 https://github.com/Sathia23456
